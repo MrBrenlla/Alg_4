@@ -1,0 +1,79 @@
+Título: Práctica 4 de Algoritmos "Dijkstra"
+
+Ángel Álvarez Rey
+Brais García Brenlla
+
+Os test foron realizados con unha máquina con estas especificacións:
+
+OS:
+  Ubuntu 18.04.3 LTS
+CPU:
+  Intel(R) Core(TM) i7-7700HQ CPU @ 2.80GHz
+  1 physical processor; 4 cores; 8 threads
+RAM:
+  16376964 KiB
+
+---------------------------------INTRODUCCIÓN-----------------------------------
+
+Nesta práctica medimos os tempos do algoritmo de dijkstra e calculamos a súa complexidade.
+
+Para este documento debemos ter en conta:
+
+1.-O tempo estará sempre medido en microsegundos.
+
+2.- Aquelas filas marcadas por '*' estarán medidas con respecto a 1000 iteracións,
+   (midese o tempo das 1000 iteración xuntas e seguidamente dividese entre 1000)
+   pois o tempo de cada iteración é menor de 500 microsegundos e sería inexacto
+   debido ás aproximacións.
+
+3.- No caso de apareceren valores anómalos serán indicados neste arquivo.
+
+4.- As columnas representan o valor aplicado á función, o tempo medido, unha cota
+   subestimada, outra axustada e outra sobreestimada repectivamente.
+
+5.-Os valores aplicados á función son resultado dunha progresión xeométrica de
+   de razón 2 empezando en 4 e rematando en 512.
+
+6.-O programa debe ser compilado co argumento -lm para funcionar correctamente.
+
+
+Agora imos analizar as táboas que conteñen os datos aos que se aplica cada
+función, tempo de execución e cotas.
+
+
+
+
+-----------------------------------TABLA---------------------------------------------------
+Grafo de numeros aleatorios
+
+               n            t(n)      t(n)/n^2.8        t(n)/n^3      t(n)/n^3.2
+              4*           0.263        0.005422        0.004109        0.003114
+              8*           2.179        0.006451        0.004256        0.002808
+             16*          19.313        0.008209        0.004715        0.002708
+             32*         162.119        0.009895        0.004947        0.002474
+             64         1313.000        0.011507        0.005009        0.002180
+            128        10943.000        0.013770        0.005218        0.001977
+            256        82307.000        0.014872        0.004906        0.001618
+            512       628680.000        0.016311        0.004684        0.001345
+
+Cota subestimada: pow(n,2.8)
+Cota axustada: pow(n,3)
+Cota sobreestimada: pow(n,3.2)
+
+Observacións:
+1.- Os resultados da columna da cota subestimada tenden a infinito.
+2.- Os resultados da cota axustada atópanse no intervalo  [0.004684, 0.005218].
+3.- Os resultados da columna da cota sobreestimada tenden a 0.
+
+-----------------------------------CONCLUSIÓN-----------------------------------
+
+Nesta práctica tivose que facer uso da repetición da función para os 4 primeiros
+valores de n xa que o algoritmo non supera os 500 microsegundos.
+
+Tras as probas podemos observar que o algoritmo de dijkstra aplicado a todos os
+nodos ten unha complexidade de O(n^3), o cal concorda coa teoría, pois dijkstra
+ten complexidade O(n^2) e ao aplicalo a n nodos danos este resultado.
+
+Esto implica que se trata dun algoritmo que aumenta o seu tempo de execución
+rapidamente, dando lugar a unha gran diferenza de tempos entre os casos mais
+pequenos e os mais grandes. 
